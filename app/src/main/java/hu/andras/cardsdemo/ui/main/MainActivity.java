@@ -1,11 +1,10 @@
 package hu.andras.cardsdemo.ui.main;
 
 import android.databinding.DataBindingUtil;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 import hu.andras.cardsdemo.R;
-import hu.andras.cardsdemo.data.Card;
 import hu.andras.cardsdemo.databinding.ActivityMainBinding;
 import hu.andras.cardsdemo.di.Injector;
 import lombok.Setter;

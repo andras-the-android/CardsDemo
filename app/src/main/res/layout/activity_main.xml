@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     >
 
@@ -28,28 +28,36 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[0].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(0)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[1].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(1)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[2].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(2)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[3].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(3)}"
+                />
 
         </LinearLayout>
 
@@ -64,28 +72,36 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[4].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(4)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[5].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(5)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[6].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(6)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[7].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(7)}"
+                />
 
         </LinearLayout>
 
@@ -100,28 +116,36 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[8].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(8)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[9].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(9)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[10].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(10)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[11].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(11)}"
+                />
 
         </LinearLayout>
 
@@ -136,28 +160,36 @@
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[12].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(12)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[13].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(13)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[14].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(14)}"
+                />
 
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:src="@drawable/card_background"/>
+                binding:imageResource="@{model.cardViewModels[15].cardImageRes}"
+                android:onClick="@{() -> model.onCardClick(15)}"
+                />
 
         </LinearLayout>
 
