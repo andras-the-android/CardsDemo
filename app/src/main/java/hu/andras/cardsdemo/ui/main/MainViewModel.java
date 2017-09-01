@@ -10,40 +10,15 @@ import java.util.List;
 
 import hu.andras.cardsdemo.BR;
 import hu.andras.cardsdemo.R;
+import hu.andras.cardsdemo.businesslogic.GameLogic;
 import hu.andras.cardsdemo.data.Card;
-
-import static hu.andras.cardsdemo.data.CardType.cc;
-import static hu.andras.cardsdemo.data.CardType.cloud;
-import static hu.andras.cardsdemo.data.CardType.console;
-import static hu.andras.cardsdemo.data.CardType.multiscreen;
-import static hu.andras.cardsdemo.data.CardType.remote;
-import static hu.andras.cardsdemo.data.CardType.tablet;
-import static hu.andras.cardsdemo.data.CardType.tv;
-import static hu.andras.cardsdemo.data.CardType.vr;
 
 public class MainViewModel extends BaseObservable {
 
     private static final int CARD_BACKGROUND_RES_ID = R.drawable.card_background;
 
-    private List<Card> cards;  {
-        cards = new ArrayList<>(16);
-        cards.add(new Card(cc));
-        cards.add(new Card(cc));
-        cards.add(new Card(cloud));
-        cards.add(new Card(cloud));
-        cards.add(new Card(console));
-        cards.add(new Card(console));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(remote));
-        cards.add(new Card(remote));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tv));
-        cards.add(new Card(tv));
-        cards.add(new Card(vr));
-        cards.add(new Card(vr));
-    }
+    private GameLogic gameLogic;
+
 
     public List<CardViewModel> getCardViewModels() {
         return cardViewModels;
@@ -56,18 +31,23 @@ public class MainViewModel extends BaseObservable {
         }
     }
 
+    public MainViewModel(GameLogic gameLogic) {
+        this.gameLogic = gameLogic;
+        gameLogic.setViewModel(this);
+    }
+
     @DrawableRes
     public int getCardImageRes(int index) {
-        Card card = cards.get(index);
+        Card card = gameLogic.get(index);
         return card.isTurnedUp() ? card.getCardType().getImageResId() : CARD_BACKGROUND_RES_ID;
     }
 
     public void onCardClick(int index) {
-        Card card = cards.get(index);
-        if (!card.isPairFound()) {
-            card.turn();
-            cardViewModels.get(index).notifyImageRes();
-        }
+        gameLogic.onCardClick(index);
+    }
+
+    public void notifyCardTurn(int index) {
+        cardViewModels.get(index).notifyImageRes();
     }
 
     public static class CardViewModel extends BaseObservable {
