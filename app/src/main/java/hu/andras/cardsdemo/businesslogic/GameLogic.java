@@ -1,5 +1,7 @@
 package hu.andras.cardsdemo.businesslogic;
 
+import android.os.Handler;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +17,16 @@ import static hu.andras.cardsdemo.data.CardType.remote;
 import static hu.andras.cardsdemo.data.CardType.tablet;
 import static hu.andras.cardsdemo.data.CardType.tv;
 import static hu.andras.cardsdemo.data.CardType.vr;
+import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;
 
 public class GameLogic {
 
+    private static final int TURN_BACK_DELAY = 1000 + 2 * ANIMATION_DURATION;
+
     @Setter private MainViewModel viewModel;
+
+    private int firstSelectedIndex = -1;
+    private int secondSelectedIndex = -1;
 
     private List<Card> cards;  {
         cards = new ArrayList<>(16);
@@ -45,10 +53,51 @@ public class GameLogic {
     }
 
     public void onCardClick(int index) {
-        Card card = cards.get(index);
-        if (!card.isPairFound()) {
-            card.turn();
-            viewModel.notifyCardTurn(index);
+        Card clickedCard = cards.get(index);
+        if (isCardClickable(clickedCard)) {
+            turnCard(index);
+
+            if (hasFirstSelectedCard()) {
+                Card firstSelectedCard = cards.get(firstSelectedIndex);
+                if (firstSelectedCard.getCardType() == clickedCard.getCardType()) {
+                    handleMatchingCards(firstSelectedCard, clickedCard);
+                } else {
+                    handleNonMatchingCards(index);
+                }
+            } else {
+                firstSelectedIndex = index;
+            }
         }
+    }
+
+    private boolean hasFirstSelectedCard() {
+        return firstSelectedIndex >= 0;
+    }
+
+    private void handleNonMatchingCards(int index) {
+        secondSelectedIndex = index;
+        new Handler().postDelayed(this::turnBackSelectedCards, TURN_BACK_DELAY);
+    }
+
+    private void turnBackSelectedCards() {
+        turnCard(firstSelectedIndex);
+        turnCard(secondSelectedIndex);
+        firstSelectedIndex = -1;
+        secondSelectedIndex = -1;
+    }
+
+    private void turnCard(int index) {
+        cards.get(index).turn();
+        viewModel.notifyCardTurn(index);
+    }
+
+    private void handleMatchingCards(Card firstSelected, Card card) {
+        firstSelected.setPairFound(true);
+        card.setPairFound(true);
+        firstSelectedIndex = -1;
+    }
+
+    private boolean isCardClickable(Card card) {
+        return !card.isPairFound() && secondSelectedIndex < 0;
     }
 }
