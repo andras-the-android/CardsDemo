@@ -31,6 +31,7 @@ public class GameLogic {
 
     private int firstSelectedIndex = -1;
     private int secondSelectedIndex = -1;
+    private Handler handler = new Handler();
 
     private List<Card> cards;  {
         generateCards();
@@ -47,10 +48,11 @@ public class GameLogic {
 
             if (hasFirstSelectedCard()) {
                 Card firstSelectedCard = cards.get(firstSelectedIndex);
+                secondSelectedIndex = index;
                 if (firstSelectedCard.getCardType() == clickedCard.getCardType()) {
-                    handleMatchingCards(firstSelectedCard, clickedCard);
+                    handleMatchingCards();
                 } else {
-                    handleNonMatchingCards(index);
+                    handleNonMatchingCards();
                 }
             } else {
                 firstSelectedIndex = index;
@@ -62,10 +64,9 @@ public class GameLogic {
         return firstSelectedIndex >= 0;
     }
 
-    private void handleNonMatchingCards(int index) {
+    private void handleNonMatchingCards() {
         scoreNonMatchingCards();
-        secondSelectedIndex = index;
-        new Handler().postDelayed(this::turnBackSelectedCards, TURN_BACK_DELAY);
+        handler.postDelayed(this::turnBackSelectedCards, TURN_BACK_DELAY);
     }
 
     private void turnBackSelectedCards() {
@@ -80,11 +81,20 @@ public class GameLogic {
         viewModel.notifyCardTurn(index);
     }
 
-    private void handleMatchingCards(Card firstSelected, Card card) {
+    private void handleMatchingCards() {
         scoreMatchingCards();
-        firstSelected.setPairFound(true);
-        card.setPairFound(true);
+        cards.get(firstSelectedIndex).setPairFound(true);
+        cards.get(secondSelectedIndex).setPairFound(true);
+        hideCards(firstSelectedIndex, secondSelectedIndex);
         firstSelectedIndex = -1;
+        secondSelectedIndex = -1;
+    }
+
+    private void hideCards(final int firstIndex, final int secondIndex) {
+        handler.postDelayed(() -> {
+            viewModel.notifyPairFound(firstIndex);
+            viewModel.notifyPairFound(secondIndex);}, ANIMATION_DURATION * 2);
+
     }
 
     private boolean isCardClickable(Card card) {

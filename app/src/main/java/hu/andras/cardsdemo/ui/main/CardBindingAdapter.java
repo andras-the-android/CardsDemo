@@ -38,6 +38,12 @@ public class CardBindingAdapter {
             }
         });
         animator.start();
+    }
 
+    @BindingAdapter("hideCard")
+    public static void hideCard(final ImageView imageView, boolean hide){
+        if (hide) {
+            imageView.animate().alpha(0f).setDuration(ANIMATION_DURATION).start();
+        }
     }
 }

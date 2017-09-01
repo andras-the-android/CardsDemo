@@ -42,12 +42,20 @@ public class MainViewModel extends BaseObservable {
         return card.isTurnedUp() ? card.getCardType().getImageResId() : CARD_BACKGROUND_RES_ID;
     }
 
+    private boolean isPairFound(int index) {
+        return gameLogic.get(index).isPairFound();
+    }
+
     public void onCardClick(int index) {
         gameLogic.onCardClick(index);
     }
 
     public void notifyCardTurn(int index) {
         cardViewModels.get(index).notifyImageRes();
+    }
+
+    public void notifyPairFound(int index) {
+        cardViewModels.get(index).notifyPairFound();
     }
 
     @Bindable
@@ -76,6 +84,15 @@ public class MainViewModel extends BaseObservable {
 
         void notifyImageRes() {
             notifyPropertyChanged(BR.cardImageRes);
+        }
+
+        @Bindable
+        public boolean isPairFound() {
+            return viewModel.isPairFound(index);
+        }
+
+        void notifyPairFound() {
+            notifyPropertyChanged(BR.pairFound);
         }
 
     }
