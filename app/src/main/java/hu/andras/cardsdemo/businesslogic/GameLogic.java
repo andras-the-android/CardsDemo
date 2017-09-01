@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import hu.andras.cardsdemo.data.Card;
 import hu.andras.cardsdemo.ui.main.MainViewModel;
@@ -22,6 +23,7 @@ import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;
 public class GameLogic {
 
     private static final int TURN_BACK_DELAY = 1000 + 2 * ANIMATION_DURATION;
+    public static final int NUMBER_OF_CARDS = 16;
 
     @Setter private MainViewModel viewModel;
 
@@ -29,23 +31,7 @@ public class GameLogic {
     private int secondSelectedIndex = -1;
 
     private List<Card> cards;  {
-        cards = new ArrayList<>(16);
-        cards.add(new Card(cc));
-        cards.add(new Card(cc));
-        cards.add(new Card(cloud));
-        cards.add(new Card(cloud));
-        cards.add(new Card(console));
-        cards.add(new Card(console));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(remote));
-        cards.add(new Card(remote));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tv));
-        cards.add(new Card(tv));
-        cards.add(new Card(vr));
-        cards.add(new Card(vr));
+        generateCards();
     }
 
     public Card get(int index) {
@@ -99,5 +85,37 @@ public class GameLogic {
 
     private boolean isCardClickable(Card card) {
         return !card.isPairFound() && secondSelectedIndex < 0;
+    }
+
+    private void generateCards() {
+        cards = new ArrayList<>(NUMBER_OF_CARDS);
+        cards.add(new Card(cc));
+        cards.add(new Card(cc));
+        cards.add(new Card(cloud));
+        cards.add(new Card(cloud));
+        cards.add(new Card(console));
+        cards.add(new Card(console));
+        cards.add(new Card(multiscreen));
+        cards.add(new Card(multiscreen));
+        cards.add(new Card(remote));
+        cards.add(new Card(remote));
+        cards.add(new Card(tablet));
+        cards.add(new Card(tablet));
+        cards.add(new Card(tv));
+        cards.add(new Card(tv));
+        cards.add(new Card(vr));
+        cards.add(new Card(vr));
+
+//        mixCards();
+    }
+
+    private void mixCards() {
+        Random random = new Random();
+        for (int i = 0; i < cards.size(); i++) {
+            Card currentCard = cards.get(i);
+            int switchIndex = random.nextInt(NUMBER_OF_CARDS);
+            cards.set(i, cards.get(switchIndex));
+            cards.set(switchIndex, currentCard);
+        }
     }
 }
