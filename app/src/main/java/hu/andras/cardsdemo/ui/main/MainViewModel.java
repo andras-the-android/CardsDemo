@@ -37,7 +37,7 @@ public class MainViewModel extends BaseObservable {
     }
 
     @DrawableRes
-    public int getCardImageRes(int index) {
+    private int getCardImageRes(int index) {
         Card card = gameLogic.get(index);
         return card.isTurnedUp() ? card.getCardType().getImageResId() : CARD_BACKGROUND_RES_ID;
     }
@@ -50,11 +50,20 @@ public class MainViewModel extends BaseObservable {
         cardViewModels.get(index).notifyImageRes();
     }
 
+    @Bindable
+    public String getScore() {
+        return String.valueOf(gameLogic.getScore());
+    }
+
+    public void notifyScore() {
+        notifyPropertyChanged(BR.score);
+    }
+
     public static class CardViewModel extends BaseObservable {
         private int index;
         private MainViewModel viewModel;
 
-        public CardViewModel(int index, MainViewModel viewModel) {
+        CardViewModel(int index, MainViewModel viewModel) {
             this.index = index;
             this.viewModel = viewModel;
         }
@@ -65,7 +74,7 @@ public class MainViewModel extends BaseObservable {
             return viewModel.getCardImageRes(index);
         }
 
-        public void notifyImageRes() {
+        void notifyImageRes() {
             notifyPropertyChanged(BR.cardImageRes);
         }
 

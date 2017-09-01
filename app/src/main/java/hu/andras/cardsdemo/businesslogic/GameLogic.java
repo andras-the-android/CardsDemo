@@ -8,6 +8,7 @@ import java.util.Random;
 
 import hu.andras.cardsdemo.data.Card;
 import hu.andras.cardsdemo.ui.main.MainViewModel;
+import lombok.Getter;
 import lombok.Setter;
 
 import static hu.andras.cardsdemo.data.CardType.cc;
@@ -23,9 +24,10 @@ import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;
 public class GameLogic {
 
     private static final int TURN_BACK_DELAY = 1000 + 2 * ANIMATION_DURATION;
-    public static final int NUMBER_OF_CARDS = 16;
+    private static final int NUMBER_OF_CARDS = 16;
 
     @Setter private MainViewModel viewModel;
+    @Getter private int score;
 
     private int firstSelectedIndex = -1;
     private int secondSelectedIndex = -1;
@@ -61,6 +63,7 @@ public class GameLogic {
     }
 
     private void handleNonMatchingCards(int index) {
+        scoreNonMatchingCards();
         secondSelectedIndex = index;
         new Handler().postDelayed(this::turnBackSelectedCards, TURN_BACK_DELAY);
     }
@@ -78,6 +81,7 @@ public class GameLogic {
     }
 
     private void handleMatchingCards(Card firstSelected, Card card) {
+        scoreMatchingCards();
         firstSelected.setPairFound(true);
         card.setPairFound(true);
         firstSelectedIndex = -1;
@@ -85,6 +89,16 @@ public class GameLogic {
 
     private boolean isCardClickable(Card card) {
         return !card.isPairFound() && secondSelectedIndex < 0;
+    }
+
+    private void  scoreMatchingCards() {
+        score += 5;
+        viewModel.notifyScore();
+    }
+
+    private void  scoreNonMatchingCards() {
+        score -= 1;
+        viewModel.notifyScore();
     }
 
     private void generateCards() {
@@ -109,6 +123,7 @@ public class GameLogic {
 //        mixCards();
     }
 
+    @SuppressWarnings("unused")
     private void mixCards() {
         Random random = new Random();
         for (int i = 0; i < cards.size(); i++) {

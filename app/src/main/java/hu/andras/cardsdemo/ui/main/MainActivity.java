@@ -9,6 +9,7 @@ import hu.andras.cardsdemo.databinding.ActivityMainBinding;
 import hu.andras.cardsdemo.di.Injector;
 import lombok.Setter;
 
+@SuppressWarnings("ConstantConditions")
 public class MainActivity extends AppCompatActivity {
 
     @Setter private MainViewModel viewModel;
@@ -19,5 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Injector.inject(this);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setModel(viewModel);
+        setSupportActionBar(binding.toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 }
