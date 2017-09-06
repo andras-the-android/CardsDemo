@@ -30,7 +30,7 @@
             <EditText
                 android:layout_width="400dp"
                 android:layout_height="wrap_content"
-                android:text="@{subscription.name}"
+                android:text="@{model.name}"
                 android:inputType="text"
                 android:textSize="16sp"
                 tools:ignore="LabelFor" />
