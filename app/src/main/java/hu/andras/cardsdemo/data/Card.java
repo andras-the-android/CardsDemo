@@ -1,6 +1,5 @@
 package hu.andras.cardsdemo.data;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
