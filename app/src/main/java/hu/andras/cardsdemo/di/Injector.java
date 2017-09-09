@@ -2,21 +2,19 @@ package hu.andras.cardsdemo.di;
 
 
 import hu.andras.cardsdemo.businesslogic.GameLogic;
+import hu.andras.cardsdemo.businesslogic.GameRepository;
 import hu.andras.cardsdemo.ui.main.MainActivity;
-import hu.andras.cardsdemo.ui.main.MainDialog;
-import hu.andras.cardsdemo.ui.main.MainDialogViewModel;
-import hu.andras.cardsdemo.ui.main.MainViewModel;
+import hu.andras.cardsdemo.ui.main.dialog.MainDialog;
+import hu.andras.cardsdemo.ui.main.dialog.MainDialogViewModel;
 
 public class Injector {
 
-    private static final MainViewModel mainViewModel = new MainViewModel(new GameLogic());
-    private static final MainDialogViewModel mainDialogViewModel = new MainDialogViewModel();
+    private static final GameRepository gameRepository = new GameRepository();
 
     public static void inject(MainActivity mainActivity) {
-        mainActivity.setViewModel(mainViewModel);
+        mainActivity.setGameLogic(new GameLogic(gameRepository));
     }
 
     public static void inject(MainDialog mainDialog) {
-        mainDialog.setViewModel(mainDialogViewModel);
     }
 }

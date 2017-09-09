@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <variable name="model" type="hu.andras.cardsdemo.ui.main.MainDialogViewModel"/>
+        <variable name="model" type="hu.andras.cardsdemo.ui.main.dialog.MainDialogViewModel"/>
     </data>
 
     <LinearLayout

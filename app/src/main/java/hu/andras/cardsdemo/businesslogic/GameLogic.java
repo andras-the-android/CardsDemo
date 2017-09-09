@@ -2,66 +2,49 @@ package hu.andras.cardsdemo.businesslogic;
 
 import android.os.Handler;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import hu.andras.cardsdemo.data.Card;
 import hu.andras.cardsdemo.ui.main.MainViewModel;
-import lombok.Getter;
 import lombok.Setter;
 
-import static hu.andras.cardsdemo.data.CardType.cc;
-import static hu.andras.cardsdemo.data.CardType.cloud;
-import static hu.andras.cardsdemo.data.CardType.console;
-import static hu.andras.cardsdemo.data.CardType.multiscreen;
-import static hu.andras.cardsdemo.data.CardType.remote;
-import static hu.andras.cardsdemo.data.CardType.tablet;
-import static hu.andras.cardsdemo.data.CardType.tv;
-import static hu.andras.cardsdemo.data.CardType.vr;
 import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;
 
 public class GameLogic {
 
     private static final int TURN_BACK_DELAY = 1000 + 2 * ANIMATION_DURATION;
-    private static final int NUMBER_OF_CARDS = 16;
 
     @Setter private MainViewModel viewModel;
-    @Getter private int score;
-
-    private int firstSelectedIndex = -1;
-    private int secondSelectedIndex = -1;
     private Handler handler = new Handler();
+    private GameRepository repository;
 
-    private List<Card> cards;  {
-        generateCards();
+    public GameLogic(GameRepository repository) {
+        this.repository = repository;
     }
 
     public Card get(int index) {
-        return cards.get(index);
+        return repository.getCard(index);
     }
 
     public void onCardClick(int index) {
-        Card clickedCard = cards.get(index);
+        Card clickedCard = repository.getCard(index);
         if (isCardClickable(clickedCard)) {
             turnCard(index);
 
             if (hasFirstSelectedCard()) {
-                Card firstSelectedCard = cards.get(firstSelectedIndex);
-                secondSelectedIndex = index;
+                Card firstSelectedCard = repository.getCard(repository.getFirstSelectedIndex());
+                repository.setSecondSelectedIndex(index);
                 if (firstSelectedCard.getCardType() == clickedCard.getCardType()) {
                     handleMatchingCards();
                 } else {
                     handleNonMatchingCards();
                 }
             } else {
-                firstSelectedIndex = index;
+                repository.setFirstSelectedIndex(index);
             }
         }
     }
 
     private boolean hasFirstSelectedCard() {
-        return firstSelectedIndex >= 0;
+        return repository.getFirstSelectedIndex() >= 0;
     }
 
     private void handleNonMatchingCards() {
@@ -70,24 +53,24 @@ public class GameLogic {
     }
 
     private void turnBackSelectedCards() {
-        turnCard(firstSelectedIndex);
-        turnCard(secondSelectedIndex);
-        firstSelectedIndex = -1;
-        secondSelectedIndex = -1;
+        turnCard(repository.getFirstSelectedIndex());
+        turnCard(repository.getSecondSelectedIndex());
+        repository.setFirstSelectedIndex(-1);
+        repository.setSecondSelectedIndex(-1);
     }
 
     private void turnCard(int index) {
-        cards.get(index).turn();
+        repository.getCard(index).turn();
         viewModel.notifyCardTurn(index);
     }
 
     private void handleMatchingCards() {
         scoreMatchingCards();
-        cards.get(firstSelectedIndex).setPairFound(true);
-        cards.get(secondSelectedIndex).setPairFound(true);
-        hideCards(firstSelectedIndex, secondSelectedIndex);
-        firstSelectedIndex = -1;
-        secondSelectedIndex = -1;
+        repository.getCard(repository.getFirstSelectedIndex()).setPairFound(true);
+        repository.getCard(repository.getSecondSelectedIndex()).setPairFound(true);
+        hideCards(repository.getFirstSelectedIndex(), repository.getSecondSelectedIndex());
+        repository.setFirstSelectedIndex(-1);
+        repository.setSecondSelectedIndex(-1);
     }
 
     private void hideCards(final int firstIndex, final int secondIndex) {
@@ -98,49 +81,20 @@ public class GameLogic {
     }
 
     private boolean isCardClickable(Card card) {
-        return !card.isPairFound() && secondSelectedIndex < 0;
+        return !card.isPairFound() && repository.getSecondSelectedIndex() < 0;
     }
 
     private void  scoreMatchingCards() {
-        score += 5;
+        repository.increaseScoreWith(5);
         viewModel.notifyScore();
     }
 
     private void  scoreNonMatchingCards() {
-        score -= 1;
+        repository.decreaseScoreWith(1);
         viewModel.notifyScore();
     }
 
-    private void generateCards() {
-        cards = new ArrayList<>(NUMBER_OF_CARDS);
-        cards.add(new Card(cc));
-        cards.add(new Card(cc));
-        cards.add(new Card(cloud));
-        cards.add(new Card(cloud));
-        cards.add(new Card(console));
-        cards.add(new Card(console));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(multiscreen));
-        cards.add(new Card(remote));
-        cards.add(new Card(remote));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tablet));
-        cards.add(new Card(tv));
-        cards.add(new Card(tv));
-        cards.add(new Card(vr));
-        cards.add(new Card(vr));
-
-//        mixCards();
-    }
-
-    @SuppressWarnings("unused")
-    private void mixCards() {
-        Random random = new Random();
-        for (int i = 0; i < cards.size(); i++) {
-            Card currentCard = cards.get(i);
-            int switchIndex = random.nextInt(NUMBER_OF_CARDS);
-            cards.set(i, cards.get(switchIndex));
-            cards.set(switchIndex, currentCard);
-        }
+    public int getScore() {
+        return repository.getScore();
     }
 }

@@ -1,4 +1,4 @@
-package hu.andras.cardsdemo.ui.main;
+package hu.andras.cardsdemo.ui.main.dialog;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -13,14 +13,13 @@ import lombok.Setter;
 
 public class MainDialog extends DialogFragment {
 
-    @Setter private MainDialogViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         Injector.inject(this);
         ViewMainDialogBinding binding = ViewMainDialogBinding.inflate(inflater, container, false);
-        binding.setModel(viewModel);
+        binding.setModel(new MainDialogViewModel());
         return binding.getRoot();
     }
 }

@@ -1,4 +1,4 @@
-package hu.andras.cardsdemo.ui.main;
+package hu.andras.cardsdemo.ui.main.dialog;
 
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
