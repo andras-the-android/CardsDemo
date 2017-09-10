@@ -6,5 +6,6 @@
     <string name="your_score">Congratulation! Your score is %1$d!</string>
     <string name="your_score_rank">Congratulation! Your score is %1$d! Your rank is %2$d</string>
     <string name="high_score">Wow! You\'ve just hit the high score!</string>
+    <string name="name_validation_message">Name should be at least 3 characters long</string>
 
 </resources>

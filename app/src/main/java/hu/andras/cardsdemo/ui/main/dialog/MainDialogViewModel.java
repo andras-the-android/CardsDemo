@@ -5,6 +5,7 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.view.View;
 
+import hu.andras.cardsdemo.BR;
 import hu.andras.cardsdemo.R;
 import hu.andras.cardsdemo.businesslogic.GameRepository;
 import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
@@ -21,6 +22,8 @@ public class MainDialogViewModel extends BaseObservable {
     private int score;
     private int rank;
     private String name;
+    private String errorMessage;
+
 
     public MainDialogViewModel(MainDialogRouter router, Resources resources, GameRepository gameRepository, HighScoreRepository highScoreRepository) {
         this.router = router;
@@ -36,8 +39,26 @@ public class MainDialogViewModel extends BaseObservable {
     }
 
     public void onSaveNameClick() {
-        highScoreRepository.addHighScore(new Score(name, score));
-        router.closeDialog();
+        if (validateName()) {
+            highScoreRepository.addHighScore(new Score(name, score));
+            router.closeDialog();
+        }
+    }
+
+    @Bindable
+    public String getValidationErrorMessage() {
+        String tempErrorMessage = errorMessage;
+        errorMessage = null;
+        return tempErrorMessage;
+    }
+
+    private boolean validateName() {
+        if (name == null || name.length() < 3) {
+            errorMessage = resources.getString(R.string.name_validation_message);
+            notifyPropertyChanged(BR.validationErrorMessage);
+            return false;
+        }
+        return true;
     }
 
     @Bindable

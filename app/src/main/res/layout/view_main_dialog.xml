@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
 
     <data>
         <variable name="model" type="hu.andras.cardsdemo.ui.main.dialog.MainDialogViewModel"/>
@@ -24,6 +25,7 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            binding:errorMessage="@{model.validationErrorMessage}"
             android:hint="@string/type_your_name">
 
             <!-- fixed width is necessarry becuse dialog fragment would compress the layout somehow.
