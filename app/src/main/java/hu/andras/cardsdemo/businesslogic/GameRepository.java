@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import hu.andras.cardsdemo.data.Card;
-import hu.andras.cardsdemo.data.Score;
 import lombok.Getter;
 import lombok.Setter;
 

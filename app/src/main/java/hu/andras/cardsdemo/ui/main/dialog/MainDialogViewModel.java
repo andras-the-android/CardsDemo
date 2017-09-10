@@ -3,7 +3,6 @@ package hu.andras.cardsdemo.ui.main.dialog;
 import android.content.res.Resources;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
-import android.view.View;
 
 import hu.andras.cardsdemo.BR;
 import hu.andras.cardsdemo.R;
@@ -17,7 +16,6 @@ public class MainDialogViewModel extends BaseObservable {
 
     private final MainDialogRouter router;
     private final Resources resources;
-    private GameRepository gameRepository;
     private final HighScoreRepository highScoreRepository;
     private int score;
     private int rank;
@@ -28,7 +26,6 @@ public class MainDialogViewModel extends BaseObservable {
     public MainDialogViewModel(MainDialogRouter router, Resources resources, GameRepository gameRepository, HighScoreRepository highScoreRepository) {
         this.router = router;
         this.resources = resources;
-        this.gameRepository = gameRepository;
         this.highScoreRepository = highScoreRepository;
         score = gameRepository.getScore();
         rank = highScoreRepository.getRank(score);
@@ -43,6 +40,10 @@ public class MainDialogViewModel extends BaseObservable {
             highScoreRepository.addHighScore(new Score(name, score));
             router.closeDialog();
         }
+    }
+
+    public boolean isOnTheHighScoresList() {
+        return rank > 0;
     }
 
     @Bindable
@@ -74,7 +75,7 @@ public class MainDialogViewModel extends BaseObservable {
         if (rank < 0) {
             return resources.getString(R.string.your_score, score);
         } else if (rank == 1) {
-            return resources.getString(R.string.high_score);
+            return resources.getString(R.string.new_high_score);
         } else {
             return resources.getString(R.string.your_score_rank, score, rank);
         }

@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class Score implements Comparable<Score> {
 
+    @Getter @Setter private transient int rank;
     @Getter @Setter private String name;
     @Getter @Setter private int score;
     private Long timestamp;
@@ -24,5 +25,13 @@ public class Score implements Comparable<Score> {
     @Override
     public int compareTo(@NonNull Score arg) {
         return arg.score != score ? arg.score - score : timestamp.compareTo(arg.timestamp);
+    }
+
+    public String getRankString() {
+        return String.valueOf(rank);
+    }
+
+    public String getScoreString() {
+        return String.valueOf(score);
     }
 }

@@ -8,6 +8,7 @@ import hu.andras.cardsdemo.businesslogic.GameLogic;
 import hu.andras.cardsdemo.businesslogic.GameRepository;
 import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
 import hu.andras.cardsdemo.persitency.HighScoreDao;
+import hu.andras.cardsdemo.ui.highscores.HighScoresActivity;
 import hu.andras.cardsdemo.ui.main.MainActivity;
 import hu.andras.cardsdemo.ui.main.dialog.MainDialog;
 import hu.andras.cardsdemo.ui.main.dialog.MainDialogViewModel;
@@ -24,6 +25,10 @@ public class Injector {
     public static void inject(MainDialog mainDialog) {
         mainDialog.setHighScoreRepository(highScoreRepository);
         mainDialog.setGameRepository(gameRepository);
+    }
+
+    public static void inject(HighScoresActivity highScoresActivity) {
+        highScoresActivity.setRepository(highScoreRepository);
     }
 
     public static void init(Context context) {

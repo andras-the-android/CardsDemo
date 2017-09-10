@@ -5,6 +5,7 @@
 
     <data>
         <variable name="model" type="hu.andras.cardsdemo.ui.main.dialog.MainDialogViewModel"/>
+        <import type="android.view.View"/>
     </data>
 
     <LinearLayout
@@ -20,13 +21,15 @@
             tools:text="Congratulation! Your score is 40!"
             android:gravity="center"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             binding:errorMessage="@{model.validationErrorMessage}"
-            android:hint="@string/type_your_name">
+            android:hint="@string/type_your_name"
+            android:visibility="@{model.onTheHighScoresList ? View.VISIBLE : View.GONE}">
 
             <!-- fixed width is necessarry becuse dialog fragment would compress the layout somehow.
               The number itself doesn't matter the layout will remain inside the screen even with high values-->
@@ -67,7 +70,8 @@
                 android:textColor="@color/colorAccent"
                 android:textSize="12sp"
                 android:minWidth="10dp"
-                android:onClick="@{(view) -> model.onSaveNameClick()}"/>
+                android:onClick="@{(view) -> model.onSaveNameClick()}"
+                android:visibility="@{model.onTheHighScoresList ? View.VISIBLE : View.GONE}"/>
 
         </LinearLayout>
 

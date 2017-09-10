@@ -15,7 +15,7 @@ import hu.andras.cardsdemo.persitency.HighScoreDao;
 public class HighScoreRepository {
 
     private static final String TAG = "HighScoreRepository";
-    private static final int HIGH_SCORE_SIZE = 10;
+    public static final int HIGH_SCORE_SIZE = 10;
 
     private HighScoreDao dao;
     private TreeSet<Score> highScores;

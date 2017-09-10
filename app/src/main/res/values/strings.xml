@@ -5,7 +5,12 @@
     <string name="type_your_name">Type your name</string>
     <string name="your_score">Congratulation! Your score is %1$d!</string>
     <string name="your_score_rank">Congratulation! Your score is %1$d! Your rank is %2$d</string>
-    <string name="high_score">Wow! You\'ve just hit the high score!</string>
+    <string name="new_high_score">Wow! You\'ve just hit the high score!</string>
     <string name="name_validation_message">Name should be at least 3 characters long</string>
+    <string name="no_high_scores_yet">No high scores yet</string>
+    <string name="high_scores">High scores</string>
+    <string name="rank">Rank</string>
+    <string name="name">Name</string>
+    <string name="score">Score</string>
 
 </resources>
