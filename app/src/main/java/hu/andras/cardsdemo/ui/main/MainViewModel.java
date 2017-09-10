@@ -20,6 +20,7 @@ public class MainViewModel extends BaseObservable {
 
     @Setter private MainRouter router;
     private GameLogic gameLogic;
+    private boolean newGame = true;
 
 
     public List<CardViewModel> getCardViewModels() {
@@ -50,6 +51,7 @@ public class MainViewModel extends BaseObservable {
 
     public void onCardClick(int index) {
         gameLogic.onCardClick(index);
+        newGame = false;
     }
 
     public void notifyCardTurn(int index) {
@@ -67,6 +69,23 @@ public class MainViewModel extends BaseObservable {
 
     public void notifyScore() {
         notifyPropertyChanged(BR.score);
+    }
+
+    public void onGameEnd() {
+        router.openDialog();
+    }
+
+    public void onDialogDismissed() {
+        gameLogic.newGame();
+        newGame = true;
+        notifyChange();
+        for (CardViewModel cvm : cardViewModels) {
+            cvm.notifyChange();
+        }
+    }
+
+    public boolean isNewGame() {
+        return newGame;
     }
 
     public static class CardViewModel extends BaseObservable {

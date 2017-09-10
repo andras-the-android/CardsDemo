@@ -24,12 +24,12 @@ public class GameRepository {
     private static final int NUMBER_OF_CARDS = 16;
 
     @Getter @Setter private int score;
-    @Getter @Setter private int firstSelectedIndex = -1;
-    @Getter @Setter private int secondSelectedIndex = -1;
+    @Getter @Setter private int firstSelectedIndex;
+    @Getter @Setter private int secondSelectedIndex;
     @Getter @Setter private List<Card> cards;
 
     public GameRepository() {
-        generateCards();
+        resetGame();
     }
 
     public Card getCard(int index) {
@@ -46,9 +46,18 @@ public class GameRepository {
 
     public void resetGame() {
         score = 0;
-        firstSelectedIndex = 0;
-        secondSelectedIndex = 0;
+        firstSelectedIndex = -1;
+        secondSelectedIndex = -1;
         generateCards();
+    }
+
+    public boolean isAllPairFound() {
+        for (Card card : cards) {
+            if (!card.isPairFound()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private void generateCards() {

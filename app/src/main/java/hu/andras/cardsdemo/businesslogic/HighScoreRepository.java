@@ -32,7 +32,7 @@ public class HighScoreRepository {
     public int getRank(int score) {
         int rank = 1;
         Iterator<Score> iterator = highScores.iterator();
-        while (iterator.hasNext() && score < iterator.next().getScore()) {
+        while (iterator.hasNext() && score <= iterator.next().getScore()) {
             ++rank;
         }
         return rank <= HIGH_SCORE_SIZE ? rank : -1;
@@ -45,6 +45,9 @@ public class HighScoreRepository {
                 highScores.remove(highScores.last());
             }
             dao.save(highScores);
+            for (Score score1 : highScores) {
+                Log.d(TAG, score1.toString());
+            }
         } else {
             Log.w(TAG, "Illegal attempt to add to high scores");
         }

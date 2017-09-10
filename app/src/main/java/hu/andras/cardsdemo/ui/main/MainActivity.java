@@ -1,5 +1,6 @@
 package hu.andras.cardsdemo.ui.main;
 
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,10 +9,11 @@ import hu.andras.cardsdemo.R;
 import hu.andras.cardsdemo.businesslogic.GameLogic;
 import hu.andras.cardsdemo.databinding.ActivityMainBinding;
 import hu.andras.cardsdemo.di.Injector;
+import hu.andras.cardsdemo.ui.main.dialog.MainDialog;
 import lombok.Setter;
 
 @SuppressWarnings("ConstantConditions")
-public class MainActivity extends AppCompatActivity  implements MainRouter{
+public class MainActivity extends AppCompatActivity  implements MainRouter, DialogInterface.OnDismissListener{
 
     @Setter private GameLogic gameLogic;
     private MainViewModel viewModel;
@@ -42,6 +44,13 @@ public class MainActivity extends AppCompatActivity  implements MainRouter{
 
     @Override
     public void openDialog() {
+        MainDialog mainDialog = new MainDialog();
+        mainDialog.show(getSupportFragmentManager(), "");
+        getSupportFragmentManager().executePendingTransactions();
+    }
 
+    @Override
+    public void onDismiss(DialogInterface dialogInterface) {
+        viewModel.onDialogDismissed();
     }
 }

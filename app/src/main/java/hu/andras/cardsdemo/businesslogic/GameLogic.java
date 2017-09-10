@@ -4,7 +4,6 @@ import android.os.Handler;
 
 import hu.andras.cardsdemo.data.Card;
 import hu.andras.cardsdemo.ui.main.MainViewModel;
-import lombok.Setter;
 
 import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;
 
@@ -12,7 +11,7 @@ public class GameLogic {
 
     private static final int TURN_BACK_DELAY = 1000 + 2 * ANIMATION_DURATION;
 
-    @Setter private MainViewModel viewModel;
+    private MainViewModel viewModel;
     private Handler handler = new Handler();
     private GameRepository repository;
 
@@ -71,6 +70,7 @@ public class GameLogic {
         hideCards(repository.getFirstSelectedIndex(), repository.getSecondSelectedIndex());
         repository.setFirstSelectedIndex(-1);
         repository.setSecondSelectedIndex(-1);
+        checkGameEnd();
     }
 
     private void hideCards(final int firstIndex, final int secondIndex) {
@@ -96,5 +96,20 @@ public class GameLogic {
 
     public int getScore() {
         return repository.getScore();
+    }
+
+    private void checkGameEnd() {
+        if (repository.isAllPairFound()) {
+            viewModel.onGameEnd();
+        }
+    }
+
+    public void setViewModel(MainViewModel viewModel) {
+        this.viewModel = viewModel;
+        checkGameEnd();
+    }
+
+    public void newGame() {
+        repository.resetGame();
     }
 }

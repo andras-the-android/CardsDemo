@@ -3,4 +3,8 @@
     <string name="save_name">Save name</string>
     <string name="new_game">New game</string>
     <string name="type_your_name">Type your name</string>
+    <string name="your_score">Congratulation! Your score is %1$d!</string>
+    <string name="your_score_rank">Congratulation! Your score is %1$d! Your rank is %2$d</string>
+    <string name="high_score">Wow! You\'ve just hit the high score!</string>
+
 </resources>

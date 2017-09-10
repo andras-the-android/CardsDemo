@@ -27,7 +27,7 @@ public class HighScoreDao {
     }
 
     public Set<Score> load() {
-        String jsonString = preferences.getString(KEY_HIGHSCORES, "");
+        String jsonString = preferences.getString(KEY_HIGHSCORES, "[]");
         Type type = new TypeToken<Set<Score>>() {}.getType();
         return new Gson().fromJson(jsonString, type);
     }

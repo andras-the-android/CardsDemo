@@ -63,6 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[0].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[0].pairFound}"
                 android:onClick="@{() -> model.onCardClick(0)}"
                 />
@@ -73,6 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[1].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[1].pairFound}"
                 android:onClick="@{() -> model.onCardClick(1)}"
                 />
@@ -83,6 +85,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[2].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[2].pairFound}"
                 android:onClick="@{() -> model.onCardClick(2)}"
                 />
@@ -93,6 +96,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[3].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[3].pairFound}"
                 android:onClick="@{() -> model.onCardClick(3)}"
                 />
@@ -111,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[4].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[4].pairFound}"
                 android:onClick="@{() -> model.onCardClick(4)}"
                 />
@@ -121,6 +126,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[5].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[5].pairFound}"
                 android:onClick="@{() -> model.onCardClick(5)}"
                 />
@@ -131,6 +137,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[6].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[6].pairFound}"
                 android:onClick="@{() -> model.onCardClick(6)}"
                 />
@@ -141,6 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[7].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[7].pairFound}"
                 android:onClick="@{() -> model.onCardClick(7)}"
                 />
@@ -159,6 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[8].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[8].pairFound}"
                 android:onClick="@{() -> model.onCardClick(8)}"
                 />
@@ -169,6 +178,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[9].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[9].pairFound}"
                 android:onClick="@{() -> model.onCardClick(9)}"
                 />
@@ -179,6 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[10].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[10].pairFound}"
                 android:onClick="@{() -> model.onCardClick(10)}"
                 />
@@ -189,6 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[11].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[11].pairFound}"
                 android:onClick="@{() -> model.onCardClick(11)}"
                 />
@@ -207,6 +219,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[12].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[12].pairFound}"
                 android:onClick="@{() -> model.onCardClick(12)}"
                 />
@@ -217,6 +230,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[13].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[13].pairFound}"
                 android:onClick="@{() -> model.onCardClick(13)}"
                 />
@@ -227,6 +241,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[14].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[14].pairFound}"
                 android:onClick="@{() -> model.onCardClick(14)}"
                 />
@@ -237,6 +252,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 binding:imageResource="@{model.cardViewModels[15].cardImageRes}"
+                binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[15].pairFound}"
                 android:onClick="@{() -> model.onCardClick(15)}"
                 />
