@@ -1,4 +1,4 @@
-package hu.andras.cardsdemo.businesslogic;
+package hu.andras.cardsdemo.repository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -78,10 +78,9 @@ public class GameRepository {
         cards.add(new Card(vr));
         cards.add(new Card(vr));
 
-//        mixCards(cards);
+        mixCards(cards);
     }
 
-    @SuppressWarnings("unused")
     private void mixCards(List<Card> cards) {
         Random random = new Random();
         for (int i = 0; i < cards.size(); i++) {

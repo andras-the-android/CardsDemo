@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import hu.andras.cardsdemo.R;
-import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 import hu.andras.cardsdemo.databinding.ActivityHighScoresBinding;
 import hu.andras.cardsdemo.di.Injector;
 import lombok.Setter;

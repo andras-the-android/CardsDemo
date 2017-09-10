@@ -6,11 +6,9 @@ import android.databinding.Bindable;
 
 import hu.andras.cardsdemo.BR;
 import hu.andras.cardsdemo.R;
-import hu.andras.cardsdemo.businesslogic.GameRepository;
-import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
 import hu.andras.cardsdemo.data.Score;
-
-import static android.view.View.*;
+import hu.andras.cardsdemo.repository.GameRepository;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 
 public class MainDialogViewModel extends BaseObservable {
 
@@ -23,7 +21,7 @@ public class MainDialogViewModel extends BaseObservable {
     private String errorMessage;
 
 
-    public MainDialogViewModel(MainDialogRouter router, Resources resources, GameRepository gameRepository, HighScoreRepository highScoreRepository) {
+    MainDialogViewModel(MainDialogRouter router, Resources resources, GameRepository gameRepository, HighScoreRepository highScoreRepository) {
         this.router = router;
         this.resources = resources;
         this.highScoreRepository = highScoreRepository;
@@ -80,10 +78,5 @@ public class MainDialogViewModel extends BaseObservable {
             return resources.getString(R.string.your_score_rank, score, rank);
         }
     }
-
-    public int getNameTextViewVisibility() {
-        return rank > 0 ? VISIBLE : GONE;
-    }
-
 
 }

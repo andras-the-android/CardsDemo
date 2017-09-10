@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 import hu.andras.cardsdemo.data.Score;
 import hu.andras.cardsdemo.databinding.ListItemHighScoreBinding;
 

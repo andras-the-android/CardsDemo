@@ -8,11 +8,11 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 
-public class TextInputLayoutValidationHelper {
+@SuppressWarnings("ConstantConditions")
+class TextInputLayoutValidationHelper {
 
     private EditText editText;
     private TextInputLayout textInputLayout;
-    private int red;
 
 
     private TextWatcher textWatcher = new TextWatcher() {
@@ -30,17 +30,17 @@ public class TextInputLayoutValidationHelper {
         }
     };
 
-    public TextInputLayoutValidationHelper(TextInputLayout textInputLayout, String errorMessage) {
+    TextInputLayoutValidationHelper(TextInputLayout textInputLayout, String errorMessage) {
         this.textInputLayout = textInputLayout;
-        editText = (EditText) textInputLayout.getEditText();
+        editText = textInputLayout.getEditText();
         editText.addTextChangedListener(textWatcher);
-        red = ContextCompat.getColor(textInputLayout.getContext(), android.R.color.holo_red_dark);
+        int red = ContextCompat.getColor(textInputLayout.getContext(), android.R.color.holo_red_dark);
         textInputLayout.setErrorEnabled(true);
         textInputLayout.setError(errorMessage);
         editText.getBackground().setColorFilter(red, PorterDuff.Mode.SRC_ATOP);
     }
 
-    public void dismissError() {
+    private void dismissError() {
         textInputLayout.setErrorEnabled(false);
         editText.getBackground().clearColorFilter();
         editText.removeTextChangedListener(textWatcher);

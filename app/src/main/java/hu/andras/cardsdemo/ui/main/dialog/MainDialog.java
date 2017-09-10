@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import hu.andras.cardsdemo.businesslogic.GameRepository;
-import hu.andras.cardsdemo.businesslogic.HighScoreRepository;
+import hu.andras.cardsdemo.repository.GameRepository;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 import hu.andras.cardsdemo.databinding.ViewMainDialogBinding;
 import hu.andras.cardsdemo.di.Injector;
 import lombok.Setter;

@@ -35,7 +35,8 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="?attr/actionBarSize"
-                    android:src="@drawable/logo"/>
+                    android:src="@drawable/logo"
+                    tools:ignore="ContentDescription"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[0].pairFound}"
                 android:onClick="@{() -> model.onCardClick(0)}"
-                />
+                tools:ignore="ContentDescription" />
 
             <ImageView
                 android:layout_width="0dp"
@@ -77,6 +78,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[1].pairFound}"
                 android:onClick="@{() -> model.onCardClick(1)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -88,6 +90,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[2].pairFound}"
                 android:onClick="@{() -> model.onCardClick(2)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -99,6 +102,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[3].pairFound}"
                 android:onClick="@{() -> model.onCardClick(3)}"
+                tools:ignore="ContentDescription"
                 />
 
         </LinearLayout>
@@ -118,6 +122,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[4].pairFound}"
                 android:onClick="@{() -> model.onCardClick(4)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -129,6 +134,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[5].pairFound}"
                 android:onClick="@{() -> model.onCardClick(5)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -140,6 +146,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[6].pairFound}"
                 android:onClick="@{() -> model.onCardClick(6)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -151,6 +158,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[7].pairFound}"
                 android:onClick="@{() -> model.onCardClick(7)}"
+                tools:ignore="ContentDescription"
                 />
 
         </LinearLayout>
@@ -170,6 +178,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[8].pairFound}"
                 android:onClick="@{() -> model.onCardClick(8)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -181,6 +190,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[9].pairFound}"
                 android:onClick="@{() -> model.onCardClick(9)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -192,6 +202,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[10].pairFound}"
                 android:onClick="@{() -> model.onCardClick(10)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -203,6 +214,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[11].pairFound}"
                 android:onClick="@{() -> model.onCardClick(11)}"
+                tools:ignore="ContentDescription"
                 />
 
         </LinearLayout>
@@ -222,6 +234,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[12].pairFound}"
                 android:onClick="@{() -> model.onCardClick(12)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -233,6 +246,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[13].pairFound}"
                 android:onClick="@{() -> model.onCardClick(13)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -244,6 +258,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[14].pairFound}"
                 android:onClick="@{() -> model.onCardClick(14)}"
+                tools:ignore="ContentDescription"
                 />
 
             <ImageView
@@ -255,6 +270,7 @@
                 binding:expandingAnimationOnly="@{model.newGame}"
                 binding:hideCard="@{model.cardViewModels[15].pairFound}"
                 android:onClick="@{() -> model.onCardClick(15)}"
+                tools:ignore="ContentDescription"
                 />
 
         </LinearLayout>

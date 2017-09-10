@@ -3,6 +3,7 @@ package hu.andras.cardsdemo.businesslogic;
 import android.os.Handler;
 
 import hu.andras.cardsdemo.data.Card;
+import hu.andras.cardsdemo.repository.GameRepository;
 import hu.andras.cardsdemo.ui.main.MainViewModel;
 
 import static hu.andras.cardsdemo.ui.main.CardBindingAdapter.ANIMATION_DURATION;

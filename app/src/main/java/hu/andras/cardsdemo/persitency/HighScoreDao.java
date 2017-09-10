@@ -13,7 +13,7 @@ import hu.andras.cardsdemo.data.Score;
 
 public class HighScoreDao {
 
-    private static final String KEY_HIGHSCORES = "highScores";
+    private static final String KEY_HIGH_SCORES = "highScores";
 
     private SharedPreferences preferences;
 
@@ -23,11 +23,11 @@ public class HighScoreDao {
 
     public void save(Set<Score> highScores) {
         String jsonString = new Gson().toJson(highScores);
-        preferences.edit().putString(KEY_HIGHSCORES, jsonString).apply();
+        preferences.edit().putString(KEY_HIGH_SCORES, jsonString).apply();
     }
 
     public Set<Score> load() {
-        String jsonString = preferences.getString(KEY_HIGHSCORES, "[]");
+        String jsonString = preferences.getString(KEY_HIGH_SCORES, "[]");
         Type type = new TypeToken<Set<Score>>() {}.getType();
         return new Gson().fromJson(jsonString, type);
     }

@@ -1,4 +1,4 @@
-package hu.andras.cardsdemo.businesslogic;
+package hu.andras.cardsdemo.repository;
 
 import android.util.Log;
 

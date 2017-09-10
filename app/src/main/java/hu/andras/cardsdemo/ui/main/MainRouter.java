@@ -1,7 +1,7 @@
 package hu.andras.cardsdemo.ui.main;
 
 
-public interface MainRouter {
+interface MainRouter {
 
     void openDialog();
 }

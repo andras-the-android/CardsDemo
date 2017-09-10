@@ -75,7 +75,7 @@ public class MainViewModel extends BaseObservable {
         router.openDialog();
     }
 
-    public void startNewGame() {
+    void startNewGame() {
         gameLogic.newGame();
         newGame = true;
         notifyChange();
