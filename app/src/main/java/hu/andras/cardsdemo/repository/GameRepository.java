@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import hu.andras.cardsdemo.data.Card;
-import lombok.Getter;
-import lombok.Setter;
 
 import static hu.andras.cardsdemo.data.CardType.cc;
 import static hu.andras.cardsdemo.data.CardType.cloud;
@@ -22,10 +20,10 @@ public class GameRepository {
 
     private static final int NUMBER_OF_CARDS = 16;
 
-    @Getter @Setter private int score;
-    @Getter @Setter private int firstSelectedIndex;
-    @Getter @Setter private int secondSelectedIndex;
-    @Getter @Setter private List<Card> cards;
+    private int score;
+    private int firstSelectedIndex;
+    private int secondSelectedIndex;
+    private List<Card> cards;
 
     public GameRepository() {
         resetGame();
@@ -89,5 +87,29 @@ public class GameRepository {
             cards.set(i, cards.get(switchIndex));
             cards.set(switchIndex, currentCard);
         }
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getFirstSelectedIndex() {
+        return firstSelectedIndex;
+    }
+
+    public void setFirstSelectedIndex(int firstSelectedIndex) {
+        this.firstSelectedIndex = firstSelectedIndex;
+    }
+
+    public int getSecondSelectedIndex() {
+        return secondSelectedIndex;
+    }
+
+    public void setSecondSelectedIndex(int secondSelectedIndex) {
+        this.secondSelectedIndex = secondSelectedIndex;
     }
 }

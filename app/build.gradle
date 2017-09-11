@@ -34,7 +34,5 @@ dependencies {
     annotationProcessor 'com.android.databinding:compiler:2.2.3'
     compile 'com.android.support:appcompat-v7:26.0.1'
     compile 'com.android.support:design:26.0.1'
-    provided "org.projectlombok:lombok:1.16.18"
     compile 'com.google.code.gson:gson:2.8.1'
-    annotationProcessor "org.projectlombok:lombok:1.16.18"
 }

@@ -8,14 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import hu.andras.cardsdemo.R;
-import hu.andras.cardsdemo.repository.HighScoreRepository;
 import hu.andras.cardsdemo.databinding.ActivityHighScoresBinding;
 import hu.andras.cardsdemo.di.Injector;
-import lombok.Setter;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 
 public class HighScoresActivity extends AppCompatActivity {
 
-    @Setter private HighScoreRepository repository;
+    private HighScoreRepository repository;
     private HighScoresViewModel viewModel;
 
     @Override
@@ -51,5 +50,9 @@ public class HighScoresActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+    public void setRepository(HighScoreRepository repository) {
+        this.repository = repository;
     }
 }

@@ -15,7 +15,7 @@ import hu.andras.cardsdemo.persitency.HighScoreDao;
 public class HighScoreRepository {
 
     private static final String TAG = "HighScoreRepository";
-    public static final int HIGH_SCORE_SIZE = 10;
+    private static final int HIGH_SCORE_SIZE = 10;
 
     private HighScoreDao dao;
     private TreeSet<Score> highScores;
@@ -45,9 +45,6 @@ public class HighScoreRepository {
                 highScores.remove(highScores.last());
             }
             dao.save(highScores);
-            for (Score score1 : highScores) {
-                Log.d(TAG, score1.toString());
-            }
         } else {
             Log.w(TAG, "Illegal attempt to add to high scores");
         }

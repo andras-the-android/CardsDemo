@@ -12,13 +12,12 @@ import hu.andras.cardsdemo.BR;
 import hu.andras.cardsdemo.R;
 import hu.andras.cardsdemo.businesslogic.GameLogic;
 import hu.andras.cardsdemo.data.Card;
-import lombok.Setter;
 
 public class MainViewModel extends BaseObservable {
 
     private static final int CARD_BACKGROUND_RES_ID = R.drawable.card_background;
 
-    @Setter private MainRouter router;
+    private MainRouter router;
     private GameLogic gameLogic;
     private boolean newGame = true;
 
@@ -118,4 +117,7 @@ public class MainViewModel extends BaseObservable {
 
     }
 
+    void setRouter(MainRouter router) {
+        this.router = router;
+    }
 }

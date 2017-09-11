@@ -14,12 +14,11 @@ import hu.andras.cardsdemo.databinding.ActivityMainBinding;
 import hu.andras.cardsdemo.di.Injector;
 import hu.andras.cardsdemo.ui.highscores.HighScoresActivity;
 import hu.andras.cardsdemo.ui.main.dialog.MainDialog;
-import lombok.Setter;
 
 @SuppressWarnings("ConstantConditions")
 public class MainActivity extends AppCompatActivity  implements MainRouter, DialogInterface.OnDismissListener{
 
-    @Setter private GameLogic gameLogic;
+    private GameLogic gameLogic;
     private MainViewModel viewModel;
 
     @Override
@@ -80,5 +79,9 @@ public class MainActivity extends AppCompatActivity  implements MainRouter, Dial
 
     private void goToHighScores() {
         startActivity(new Intent(this, HighScoresActivity.class));
+    }
+
+    public void setGameLogic(GameLogic gameLogic) {
+        this.gameLogic = gameLogic;
     }
 }

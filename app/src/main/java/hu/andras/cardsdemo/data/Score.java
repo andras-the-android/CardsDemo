@@ -2,18 +2,12 @@ package hu.andras.cardsdemo.data;
 
 import android.support.annotation.NonNull;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
-@ToString
 public class Score implements Comparable<Score> {
 
-    @Getter @Setter private transient int rank;
-    @Getter @Setter private String name;
-    @Getter @Setter private int score;
+    private transient int rank;
+    private String name;
+    private int score;
     private Long timestamp;
 
     public Score(String name, int score) {
@@ -33,5 +27,25 @@ public class Score implements Comparable<Score> {
 
     public String getScoreString() {
         return String.valueOf(score);
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

@@ -9,16 +9,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import hu.andras.cardsdemo.repository.GameRepository;
-import hu.andras.cardsdemo.repository.HighScoreRepository;
 import hu.andras.cardsdemo.databinding.ViewMainDialogBinding;
 import hu.andras.cardsdemo.di.Injector;
-import lombok.Setter;
+import hu.andras.cardsdemo.repository.GameRepository;
+import hu.andras.cardsdemo.repository.HighScoreRepository;
 
 public class MainDialog extends DialogFragment implements MainDialogRouter {
 
-    @Setter private GameRepository gameRepository;
-    @Setter private HighScoreRepository highScoreRepository;
+    private GameRepository gameRepository;
+    private HighScoreRepository highScoreRepository;
     private MainDialogViewModel viewModel;
 
     @Override
@@ -58,5 +57,13 @@ public class MainDialog extends DialogFragment implements MainDialogRouter {
             getDialog().setDismissMessage(null);
         }
         super.onDestroyView();
+    }
+
+    public void setGameRepository(GameRepository gameRepository) {
+        this.gameRepository = gameRepository;
+    }
+
+    public void setHighScoreRepository(HighScoreRepository highScoreRepository) {
+        this.highScoreRepository = highScoreRepository;
     }
 }

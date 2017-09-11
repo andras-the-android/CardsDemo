@@ -1,8 +1,5 @@
 package hu.andras.cardsdemo.data;
 
-import lombok.Data;
-
-@Data
 public class Card {
 
     public Card(CardType cardType) {
@@ -16,4 +13,21 @@ public class Card {
     public void turn() {
         turnedUp = !turnedUp;
     }
+
+    public CardType getCardType() {
+        return cardType;
+    }
+
+    public boolean isPairFound() {
+        return pairFound;
+    }
+
+    public void setPairFound(boolean pairFound) {
+        this.pairFound = pairFound;
+    }
+
+    public boolean isTurnedUp() {
+        return turnedUp;
+    }
+
 }

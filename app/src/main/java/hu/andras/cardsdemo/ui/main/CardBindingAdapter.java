@@ -2,20 +2,18 @@ package hu.andras.cardsdemo.ui.main;
 
 import android.animation.Animator;
 import android.databinding.BindingAdapter;
-import android.util.Log;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 
-import lombok.experimental.UtilityClass;
+public final class CardBindingAdapter {
 
-@UtilityClass
-public class CardBindingAdapter {
+    private CardBindingAdapter() {
+    }
 
     public static final int ANIMATION_DURATION = 200;
 
     @BindingAdapter({"imageResource", "expandingAnimationOnly"})
     public static void setImageResource(final ImageView imageView, final int resource, boolean expandingAnimationOnly){
-        Log.d("xxx", "" + resource);
         if (expandingAnimationOnly) {
             imageView.setScaleX(0f);
             expandCard(imageView, resource);

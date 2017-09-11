@@ -5,10 +5,10 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import lombok.experimental.UtilityClass;
+public final class HighScoresBindingAdapter {
 
-@UtilityClass
-public class HighScoresBindingAdapter {
+    private HighScoresBindingAdapter() {
+    }
 
     @BindingAdapter("configureWithAdapter")
     public static void configureWithAdapter(RecyclerView recyclerView, RecyclerView.Adapter adapter) {
