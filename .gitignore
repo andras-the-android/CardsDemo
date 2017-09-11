@@ -21,6 +21,7 @@ target/
 gen-external-apklibs/
 gen/
 libs/
+captures/
 
 # Gradle
 .gradle
